@@ -195,6 +195,12 @@ class BrowserConsoleHandler extends AbstractProcessingHandler
     private static function dump($title, array $dict)
     {
         $script = [];
+        
+        // Convert exception to string
+        if (isset($dict['exception'])) {
+            $dict['exception'] = (string)$dict['exception'];
+        }
+
         $dict = array_filter($dict);
         if (empty($dict)) {
             return $script;
